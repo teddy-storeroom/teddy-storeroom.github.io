@@ -151,8 +151,6 @@
             overflow: hidden;
         }
         
-        /* Убрали серую линию (псевдоэлемент ::before) */
-        
         .panel-title {
             font-size: 1.6rem;
             margin-bottom: 15px;
@@ -563,7 +561,7 @@
         <div class="panel">
             <div class="counter">Выбрано: <span id="selectedCount">0</span></div>
             <div class="help-button" id="helpButton">?</div>
-            <h2 class="panel-title">ММХД 2025</h2>
+            <h2 class="panel-title">Выберите предметы</h2>
             
             <div class="instructions" id="instructions">
                 <h3>Как использовать:</h3>
@@ -659,116 +657,119 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Базовый URL для изображений
+            const baseUrl = 'https://teddy-storeroom.github.io';
+            
             // Новые предметы с изображениями, распределенные по категориям
             const itemsByCategory = {
                 bracelets: [
                     {
                         id: 'bracelet1',
                         name: 'Браслет (найден в гримерной №3)',
-                        imageUrl: 'img/браслет1.png'
+                        imageUrl: baseUrl + '/img/браслет1.png'
                     },
                     {
                         id: 'bracelet2',
                         name: 'Браслет Бэды Эйллынз (все серии, кроме 1)',
-                        imageUrl: 'img/браслет2.png'
+                        imageUrl: baseUrl + '/img/браслет2.png'
                     },
                     {
                         id: 'bracelet3',
                         name: 'Браслет маленькой Бэды (серия 1)',
-                        imageUrl: 'img/браслет5.png'
+                        imageUrl: baseUrl + '/img/браслет5.png'
                     },
                     {
                         id: 'bracelet4',
                         name: 'Браслет Маджиды Арваз (серия 4)',
-                        imageUrl: 'img/браслет4.png'
+                        imageUrl: baseUrl + '/img/браслет4.png'
                     }
                 ],
                 accessories: [
                     {
                         id: 'accessory1',
                         name: 'Шляпа оператора Дика',
-                        imageUrl: 'img/шляпа.png'
+                        imageUrl: baseUrl + '/img/шляпа.png'
                     },
                     {
                         id: 'accessory2',
                         name: 'Банка с кремом (из гримерной №2)',
-                        imageUrl: 'img/крем.png'
+                        imageUrl: baseUrl + '/img/крем.png'
                     },
                     {
                         id: 'accessory3',
                         name: 'Анисовый кулон (найден среди декораций)',
-                        imageUrl: 'img/кулон.png'
+                        imageUrl: baseUrl + '/img/кулон.png'
                     },
                     {
                         id: 'accessory4',
                         name: 'Платок Лары Назиры (серия 9)',
-                        imageUrl: 'img/платок.png'
+                        imageUrl: baseUrl + '/img/платок.png'
                     }
                 ],
                 camelAccessories: [
                     {
                         id: 'camel1',
                         name: 'Седло Сафира (верблюжье)',
-                        imageUrl: 'img/седло.png'
+                        imageUrl: baseUrl + '/img/седло.png'
                     },
                     {
                         id: 'camel2',
                         name: 'Гравюра (любимый верблюд)',
-                        imageUrl: 'img/фотка.png'
+                        imageUrl: baseUrl + '/img/фотка.png'
                     },
                     {
                         id: 'camel3',
                         name: 'Набор для грумминга (верблюжий)',
-                        imageUrl: 'img/набор.png'
+                        imageUrl: baseUrl + '/img/набор.png'
                     },
                     {
                         id: 'camel4',
                         name: 'Брелок (+ ржавый ключ)',
-                        imageUrl: 'img/брелок.png'
+                        imageUrl: baseUrl + '/img/брелок.png'
                     }
                 ],
                 tajines: [
                     {
                         id: 'tajine1',
                         name: 'Почти волшебный тажин',
-                        imageUrl: 'img/тажин1.png'
+                        imageUrl: baseUrl + '/img/тажин1.png'
                     },
                     {
                         id: 'tajine2',
                         name: 'Почти волшебный тажин',
-                        imageUrl: 'img/тажин2.png'
+                        imageUrl: baseUrl + '/img/тажин2.png'
                     },
                     {
                         id: 'tajine3',
                         name: 'Почти волшебный тажин',
-                        imageUrl: 'img/тажин3.png'
+                        imageUrl: baseUrl + '/img/тажин3.png'
                     },
                     {
                         id: 'tajine4',
                         name: 'Почти волшебный тажин',
-                        imageUrl: 'img/тажин4.png'
+                        imageUrl: baseUrl + '/img/тажин4.png'
                     }
                 ],
                 spicePalettes: [
                     {
                         id: 'spice1',
                         name: 'Палетка специя малая (треугольная)',
-                        imageUrl: 'img/палетка1.png'
+                        imageUrl: baseUrl + '/img/палетка1.png'
                     },
                     {
                         id: 'spice2',
                         name: 'Палетка специя малая (квадратная)',
-                        imageUrl: 'img/палетка3.png'
+                        imageUrl: baseUrl + '/img/палетка3.png'
                     },
                     {
                         id: 'spice3',
                         name: 'Палетка специя средняя (круглая)',
-                        imageUrl: 'img/палетка2.png'
+                        imageUrl: baseUrl + '/img/палетка2.png'
                     },
                     {
                         id: 'spice4',
                         name: 'Палетка специя большая (квадратная)',
-                        imageUrl: 'img/палетка4.png'
+                        imageUrl: baseUrl + '/img/палетка4.png'
                     }
                 ]
             };
@@ -920,7 +921,7 @@
                     tablesCode += '[table]';
                     tablesCode += '[tr]';
                     
-                    // Ячейки с изображениями
+                    // Ячейки с изображениями (используем полные URL)
                     tablesCode += `[td][center][width=170][img]${item1.imageUrl}[/img][/width][/center][/td]`;
                     tablesCode += item2 ? `[td][center][width=170][img]${item2.imageUrl}[/img][/width][/center][/td]` : '[td][/td]';
                     tablesCode += item3 ? `[td][center][width=170][img]${item3.imageUrl}[/img][/width][/center][/td]` : '[td][/td]';
