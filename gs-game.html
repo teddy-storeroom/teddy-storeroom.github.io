@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кладовая домовика Тедди</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        body {
+            background: url('https://radika1.link/2025/08/01/ra_forum_background_img_08c2550a6ef5a7985.jpg');
+            background-size: auto;
+            background-position: center;
+            background-repeat: repeat;
+            color: #e0f7fa;
+            padding: 15px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: stretch;
+        }
+        
+        /* Верхнее горизонтальное меню */
+        .top-menu {
+            grid-column: 1 / -1;
+            background: rgba(10, 30, 60, 0.95);
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 2px double #BA9868;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .menu-item {
+            color: #FFD580;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .menu-item:hover {
+            background: rgba(186, 152, 104, 0.2);
+            border: 1px solid #BA9868;
+            transform: translateY(-2px);
+        }
+        
+        .header-block {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .ravenclaw-title {
+            font-family: 'Permanent Marker', cursive;
+            font-weight: 400;
+            font-size: 100px;
+            margin: 0;
+            padding: 0 20px;
+            max-width: 100%;
+            text-align: center;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            background: linear-gradient(90deg, #BA9868, #FFD580);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #C0B29D;
+            margin: 5px 0 10px 20px;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1300px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        h1, h2, h3, .panel-title {
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #BA9868, #FFD580);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(186, 152, 104, 0.5);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0d2eb;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .panel {
+            background: rgba(10, 30, 60, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 2px double #BA9868;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .panel-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #BA9868;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px double #BA9868;
+            text-shadow: 0 0 5px rgba(186, 152, 104, 0.3);
+            position: relative;
+        }
+        
+        .help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(186, 152, 104, 0.2);
+            border: 1px solid #BA9868;
+            color: #FFD580;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .help-button:hover {
+            background: rgba(186, 152, 104, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .instructions {
+            background: rgba(186, 152, 104, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0;
+            border-left: 3px solid #BA9868;
+            display: none;
+        }
+        
+        .instructions.show {
+            display: block;
+        }
+        
+        .instructions h3 {
+            color: #FFD580;
+            margin-bottom: 8px;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .category {
+            padding: 12px;
+            background: rgba(25, 55, 100, 0.5);
+            border-radius: 10px;
+            border-left: 3px solid #BA9868;
+        }
+        
+        .category-title {
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+            font-size: 1.2rem;
+            color: #FFD580;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(186, 152, 104, 0.3);
+        }
+        
+        .items-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .items-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .items-container::-webkit-scrollbar-track {
+            background: rgba(0, 20, 40, 0.5);
+            border-radius: 4px;
+        }
+        
+        .items-container::-webkit-scrollbar-thumb {
+            background: #BA9868;
+            border-radius: 4px;
+        }
+        
+        .items-container::-webkit-scrollbar-thumb:hover {
+            background: #9c7c56;
+        }
+        
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            background: rgba(25, 55, 100, 0.7);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+        
+        .item:hover {
+            background: rgba(35, 75, 140, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #BA9868;
+        }
+        
+        .item::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD580, #BA9868, #FFD580);
+            border-radius: 8px 8px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .item:hover::before {
+            opacity: 1;
+        }
+        
+        .item-checkbox {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #BA9868;
+        }
+        
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            padding: 4px;
+            border: 0px solid #2a5a8a;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .item:hover .item-image {
+            transform: scale(1.05);
+        }
+        
+        .item-name {
+            font-size: 0.8rem;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        
+        .input-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0 15px;
+        }
+        
+        .input-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-field label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #BA9868;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .input-field label::before {
+            content: "✎";
+            margin-right: 10px;
+            font-size: 1.3rem;
+            color: #FFD580;
+        }
+        
+        .input-field input, .input-field textarea {
+            padding: 12px 16px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid #BA9868;
+            transition: all 0.3s ease;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        .input-field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .input-field input:focus, .input-field textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 8px rgba(186, 152, 104, 0.5);
+        }
+        
+        .code-output {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .code-output textarea {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            padding: 20px;
+            background: rgba(0, 15, 35, 0.85);
+            color: #e0f7fa;
+            border: 2px double #BA9868;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: none;
+            margin-top: 12px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+            flex-grow: 1;
+        }
+        
+        .code-output textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(186, 152, 104, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 12px 20px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .action-btn:active {
+            transform: translateY(0);
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, #BA9868, #9c7c56);
+            box-shadow: 0 4px 12px rgba(186, 152, 104, 0.4);
+        }
+        
+        .copy-btn:hover {
+            background: linear-gradient(to right, #9c7c56, #7d6345);
+            box-shadow: 0 6px 15px rgba(186, 152, 104, 0.6);
+        }
+        
+        .refresh-btn {
+            background: linear-gradient(to right, #7d6345, #5e4b34);
+            box-shadow: 0 4px 12px rgba(125, 99, 69, 0.4);
+        }
+        
+        .refresh-btn:hover {
+            background: linear-gradient(to right, #5e4b34, #3f3423);
+            box-shadow: 0 6px 15px rgba(125, 99, 69, 0.6);
+        }
+        
+        .clear-btn {
+            background: linear-gradient(to right, #8B4513, #654321);
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+        }
+        
+        .clear-btn:hover {
+            background: linear-gradient(to right, #654321, #462e16);
+            box-shadow: 0 6px 15px rgba(139, 69, 19, 0.6);
+        }
+        
+        .counter {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(186, 152, 104, 0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #BA9868;
+        }
+        
+        @media (max-width: 1100px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .panel {
+                padding: 15px;
+            }
+            
+            .item {
+                padding: 6px;
+            }
+            
+            .item-image {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .categories-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .top-menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .menu-item {
+                font-size: 1.1rem;
+                padding: 6px 12px;
+            }
+            
+            .help-button {
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-block">
+            <h1 class="ravenclaw-title">Ravenclaw</h1>
+            <h1>Кладовая домовика Тедди</h1>
+        </div>
+
+        <!-- Верхнее горизонтальное меню -->
+        <div class="top-menu">
+            <a href="#" class="menu-item">Когтевран</a>
+            <a href="#" class="menu-item">Плюй-камни</a>
+            <a href="#" class="menu-item">ММХД</a>
+            <a href="#" class="menu-item">Лавка</a>
+            <a href="#" class="menu-item">Квиддич</a>
+        </div>
+        
+        <div class="panel">
+            <div class="counter">Выбрано: <span id="selectedCount">0</span></div>
+            <div class="help-button" id="helpButton">?</div>
+            <h2 class="panel-title">Плюй-камни</h2>
+            
+            <div class="instructions" id="instructions">
+                <h3>Как использовать:</h3>
+                <ol>
+                    <li>Выберите нужные подарки (до 3 в каждой таблице)</li>
+                    <li>Введите имя получателя и записку (по желанию)</li>
+                    <li>При необходимости обновите текст или очистите выбор</li>
+                    <li>Скопируйте готовый код для форума</li>
+                    <li>Двойной клик по тексту сообщения позволяет редактировать его</li>
+                </ol>
+            </div>
+            
+            <div class="categories-container">
+                <div class="category">
+                    <h3 class="category-title">Настольные модели</h3>
+                    <div class="items-container" id="tabletopGamesContainer">
+                        <!-- Tabletop game items will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h3 class="category-title">Игровые наборы и аксессуары</h3>
+                    <div class="items-container" id="gameSetsContainer">
+                        <!-- Game set items will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h3 class="category-title">Антистресс и игрушки</h3>
+                    <div class="items-container" id="stressToysContainer">
+                        <!-- Stress toy items will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="category">
+                    <h3 class="category-title">Сладости</h3>
+                    <div class="items-container" id="sweetsContainer">
+                        <!-- Sweet items will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <div class="input-fields">
+                <div class="input-field">
+                    <label for="userName">Введите имя получателя:</label>
+                    <input type="text" id="userName" placeholder="Имя ученика Когтеврана">
+                </div>
+                
+                <div class="input-field">
+                    <label for="userNote">Введите текст записки (необязательно):</label>
+                    <textarea id="userNote" placeholder="Текст записки от Тедди..."></textarea>
+                </div>
+            </div>
+            
+            <h2 class="panel-title">Сгенерированный код</h2>
+            <div class="code-output">
+                <textarea id="outputCode" readonly></textarea>
+                <div class="controls">
+                    <button class="action-btn refresh-btn" id="refreshBtn">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                        </svg>
+                        Обновить
+                    </button>
+                    <button class="action-btn clear-btn" id="clearBtn">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                        Очистить
+                    </button>
+                    <button class="action-btn copy-btn" id="copyBtn">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg>
+                        Копировать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Базовый URL для изображений
+            const baseUrl = 'https://teddy-storeroom.github.io';
+            
+            // Новые предметы с изображениями, распределенные по категориям
+            const itemsByCategory = {
+                tabletopGames: [
+                    {
+                        id: 'balanceTower',
+                        name: 'Башня балансир "Дзен №7"',
+                        imageUrl: baseUrl + '/img/gs/Башня-балансир.png'
+                    },
+                    {
+                        id: 'newtCradle',
+                        name: 'Настольный маятник "Ньютова колыбель"',
+                        imageUrl: baseUrl + '/img/gs/Ньютова колыбель.png'
+                    },
+                    {
+                        id: 'solarSystem',
+                        name: 'Настольная модель солнечной системы "Вечный танец"',
+                        imageUrl: baseUrl + '/img/gs/модель сс.png'
+                    },
+                    {
+                        id: 'lamp',
+                        name: 'Лампа "Случайные числа"',
+                        imageUrl: baseUrl + '/img/gs/Камень-лампа.png'
+                    }
+                ],
+                gameSets: [
+                    {
+                        id: 'gameBoard',
+                        name: 'Доска для игры в плюй-камни "Птичьи сказы"',
+                        imageUrl: baseUrl + '/img/gs/столик.png'
+                    },
+                    {
+                        id: 'stoneSet',
+                        name: 'Игровой набор камней "Вечная классика"',
+                        imageUrl: baseUrl + '/img/gs/Набор камней.png'
+                    },
+                    {
+                        id: 'glasses',
+                        name: 'Очки "Диапазон точности"',
+                        imageUrl: baseUrl + '/img/gs/очки.png'
+                    },
+                    {
+                        id: 'badge',
+                        name: 'Значок "Крылья и камни"',
+                        imageUrl: baseUrl + '/img/gs/Значок ПК.png'
+                    }
+                ],
+                stressToys: [
+                    {
+                        id: 'squish1',
+                        name: 'Сквиш "Камнегиб"',
+                        imageUrl: baseUrl + '/img/gs/Сквиш1.png'
+                    },
+                    {
+                        id: 'squish2',
+                        name: 'Сквиш "Камнегиб"',
+                        imageUrl: baseUrl + '/img/gs/Сквиш4.png'
+                    },
+                    {
+                        id: 'squish3',
+                        name: 'Сквиш "Камнегиб"',
+                        imageUrl: baseUrl + '/img/gs/Сквиш5.png'
+                    },
+                    {
+                        id: 'squish4',
+                        name: 'Сквиш "Камнегиб"',
+                        imageUrl: baseUrl + '/img/gs/Сквиш7.png'
+                    },
+                    {
+                        id: 'squish5',
+                        name: 'Сквиш "Камнегиб"',
+                        imageUrl: baseUrl + '/img/gs/Сквиш10.png'
+                    }
+                ],
+                sweets: [
+                    {
+                        id: 'lollipop1',
+                        name: 'Леденцы "Игровой ход"',
+                        imageUrl: baseUrl + '/img/gs/леденцы1.png'
+                    },
+                    {
+                        id: 'lollipop2',
+                        name: 'Леденцы "Игровой ход"',
+                        imageUrl: baseUrl + '/img/gs/леденец2.png'
+                    },
+                    {
+                        id: 'lollipop3',
+                        name: 'Леденцы "Игровой ход"',
+                        imageUrl: baseUrl + '/img/gs/леденец3.png'
+                    },
+                    {
+                        id: 'lollipop4',
+                        name: 'Леденцы "Игровой ход"',
+                        imageUrl: baseUrl + '/img/gs/леденец4.png'
+                    },
+                    {
+                        id: 'lollipop5',
+                        name: 'Леденцы "Игровой ход"',
+                        imageUrl: baseUrl + '/img/gs/леденец5.png'
+                    },
+                    {
+                        id: 'candies',
+                        name: 'Конфетки "SuperИгра"',
+                        imageUrl: baseUrl + '/img/gs/бобы-камни.png'
+                    },
+                    {
+                        id: 'card',
+                        name: 'Карточка коллекционная "SuperИгра"',
+                        imageUrl: baseUrl + '/img/gs/gs_1.png'
+                    },
+                    {
+                        id: 'card',
+                        name: 'Карточка коллекционная "SuperИгра"',
+                        imageUrl: baseUrl + '/img/gs/gs_2.png'
+                    }
+                ]
+            };
+            
+            // Расширенная база фраз для вступлений
+            const introductions = [
+                "С легким шорохом домовой эльф Тедди появился посреди комнаты. В руках он держал небольшой сверток.",
+                "Внезапно раздался тихий хлопок, и появился домовой эльф Тедди с посылкой.",
+                "Появившись из ниоткуда с характерным хлопком, домовой эльф Тедди опустил на стол аккуратно упакованный сверток.",
+                "С легким треском, в комнате материализовался домовой эльф Тедди с посылкой.",
+                "Из тени книжных шкафов вынырнул домовой эльф Тедди, держа в руках загадочный сверток.",
+                "Стук в дверь, щелчок, домой эльф Тедди опустил на столик увесистый сверток.",
+                "Воздух в комнате дрогнул и с тихим хлопком появился домовой эльф Тедди. В его пальцах покоился аккуратный пакет. Не говоря ни слова, он бережно опустил его на ближайшую поверхность и растворился в пространстве.",
+                "Резкий хлопок возвестил о появлении Тедди, домашнего эльфа башни Когтевран. В его руках был небольшой сверток. Он аккуратно опустил его на покрывало ближайшей к нему кровати, и тут же испарился из комнаты с приглушенным звуком.",
+                "Все произошло мгновенно: хлопок — и в комнате уже стоял Тедди, домовой эльф Когтеврана. Его тонкие ручки сжимали небольшой сверток. Безмолвно положив свою ношу на прикроватную тумбочку, эльф исчез.",
+                "Тишину нарушил хлопок и в комнате появился Тедди, домовой эльф башни Когтевран. В своих руках он держал небольшой сверток. Не произнеся ни звука, эльф оставил свою ношу на небольшом столике и растаял в воздухе так же внезапно, как и появился.",
+                "Резкий хлопок возвестил о появлении Тедди, домашнего эльфа башни Когтевран. В его руках виднелись два маленьких свертка. Он аккуратно опустил их на расшитые золотыми нитями темно-синие покрывала и тут же испарился из комнаты с приглушенным звуком."
+            ];
+            
+            // Генерация списка предметов по новым категориям
+            const tabletopGamesContainer = document.getElementById('tabletopGamesContainer');
+            itemsByCategory.tabletopGames.forEach(item => {
+                const itemElement = createItemElement(item);
+                tabletopGamesContainer.appendChild(itemElement);
+            });
+            
+            const gameSetsContainer = document.getElementById('gameSetsContainer');
+            itemsByCategory.gameSets.forEach(item => {
+                const itemElement = createItemElement(item);
+                gameSetsContainer.appendChild(itemElement);
+            });
+            
+            const stressToysContainer = document.getElementById('stressToysContainer');
+            itemsByCategory.stressToys.forEach(item => {
+                const itemElement = createItemElement(item);
+                stressToysContainer.appendChild(itemElement);
+            });
+            
+            const sweetsContainer = document.getElementById('sweetsContainer');
+            itemsByCategory.sweets.forEach(item => {
+                const itemElement = createItemElement(item);
+                sweetsContainer.appendChild(itemElement);
+            });
+            
+            function createItemElement(item) {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'item';
+                itemElement.innerHTML = `
+                    <input type="checkbox" class="item-checkbox" id="${item.id}" data-name="${item.name}" data-image="${item.imageUrl}">
+                    <img src="${item.imageUrl}" alt="${item.name}" class="item-image">
+                    <div class="item-name">${item.name}</div>
+                `;
+                return itemElement;
+            }
+            
+            // Элементы для работы
+            const userNameInput = document.getElementById('userName');
+            const userNoteInput = document.getElementById('userNote');
+            const outputCode = document.getElementById('outputCode');
+            const copyBtn = document.getElementById('copyBtn');
+            const refreshBtn = document.getElementById('refreshBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const selectedCount = document.getElementById('selectedCount');
+            const helpButton = document.getElementById('helpButton');
+            const instructions = document.getElementById('instructions');
+            
+            // Слушатель для кнопки помощи
+            helpButton.addEventListener('click', function() {
+                instructions.classList.toggle('show');
+            });
+            
+            // Слушатели событий
+            document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    generateCode();
+                    updateCounter();
+                });
+            });
+            
+            userNameInput.addEventListener('input', generateCode);
+            userNoteInput.addEventListener('input', generateCode);
+            copyBtn.addEventListener('click', copyCode);
+            refreshBtn.addEventListener('click', generateCode);
+            
+            clearBtn.addEventListener('click', function() {
+                document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                userNameInput.value = '';
+                userNoteInput.value = '';
+                generateCode();
+                updateCounter();
+            });
+            
+            // Включение редактирования по двойному клику
+            outputCode.addEventListener('dblclick', function() {
+                this.removeAttribute('readonly');
+                this.focus();
+                this.style.boxShadow = '0 0 12px rgba(186, 152, 104, 0.7)';
+            });
+            
+            // Отключение редактирования при потере фокуса
+            outputCode.addEventListener('blur', function() {
+                this.setAttribute('readonly', true);
+                this.style.boxShadow = 'inset 0 0 8px rgba(0, 0, 0, 0.3)';
+            });
+            
+            // Обновление счетчика выбранных элементов
+            function updateCounter() {
+                const selected = document.querySelectorAll('.item-checkbox:checked').length;
+                selectedCount.textContent = selected;
+            }
+            
+            // Инициализация
+            generateCode();
+            updateCounter();
+            
+            // Функция генерации кода с таблицами по 3 подарка
+            function generateCode() {
+                // Случайное вступление
+                const intro = introductions[Math.floor(Math.random() * introductions.length)];
+                
+                // Имя пользователя и записка
+                const name = userNameInput.value.trim();
+                const note = userNoteInput.value.trim();
+                
+                // Выбранные предметы
+                const selectedItems = [];
+                document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
+                    selectedItems.push({
+                        name: checkbox.dataset.name,
+                        imageUrl: checkbox.dataset.image
+                    });
+                });
+                
+                // Генерация таблиц с предметами (по 3 в каждой таблице)
+                let tablesCode = '';
+                
+                // Разбиваем предметы на группы по 3
+                for (let i = 0; i < selectedItems.length; i += 3) {
+                    const groupItems = selectedItems.slice(i, i + 3);
+                    
+                    tablesCode += '[table]';
+                    tablesCode += '[tr]';
+                    
+                    // Создаем ячейки ТОЛЬКО для существующих предметов
+                    groupItems.forEach(item => {
+                        tablesCode += `[td][center][width=170][img]${item.imageUrl}[/img][/width][/center][/td]`;
+                    });
+                    
+                    tablesCode += '[/tr]';
+                    tablesCode += '[tr]';
+                    
+                    // Создаем ячейки с названиями ТОЛЬКО для существующих предметов
+                    groupItems.forEach(item => {
+                        tablesCode += `[td][center][size=90][i][b]${item.name}[/b][/i][/size][/center][/td]`;
+                    });
+                    
+                    tablesCode += '[/tr]';
+                    tablesCode += '[/table]\n\n';
+                }
+                
+                // Формирование итогового кода
+                let finalCode = intro + '\n\n';
+                
+                // Добавляем записку только если она есть
+                if (note) {
+                    if (name) {
+                        finalCode += `[quote][i]Записка: "${name}, ${note}"[/i][/quote]\n\n`;
+                    } else {
+                        finalCode += `[quote][i]Записка: "${note}"[/i][/quote]\n\n`;
+                    }
+                } else if (name) {
+                    // Если есть только имя, но нет записки
+                    finalCode += `[quote][i]Записка: "${name}, пусть жизнь в башне Когтевран будет сладкой!"[/i][/quote]\n\n`;
+                }
+                
+                // Добавляем таблицы с подарками
+                if (selectedItems.length > 0) {
+                    finalCode += tablesCode;
+                } else {
+                    finalCode += "[i]Тедди исчез так же внезапно, как и появился...[/i]";
+                }
+                
+                outputCode.value = finalCode;
+            }
+            
+            // Функция копирования кода
+            function copyCode() {
+                outputCode.select();
+                document.execCommand('copy');
+                
+                // Визуальное подтверждение копирования
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg> Скопировано!';
+                copyBtn.style.background = 'linear-gradient(to right, #5e4b34, #3f3423)';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.style.background = 'linear-gradient(to right, #BA9868, #9c7c56)';
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
