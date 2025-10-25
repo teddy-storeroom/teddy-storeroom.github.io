@@ -551,9 +551,9 @@
 
         <!-- Верхнее горизонтальное меню -->
         <div class="top-menu">
-            <a href="#" class="menu-item">Когтевран</a>
+            <a href="index.html" class="menu-item">Когтевран</a>
             <a href="gs-game.html" class="menu-item">Плюй-камни</a>
-            <a href="#" class="menu-item">ММХД</a>
+            <a href="mmhd25.html" class="menu-item">ММХД</a>
             <a href="#" class="menu-item">Лавка</a>
             <a href="#" class="menu-item">Квиддич</a>
         </div>
@@ -561,7 +561,7 @@
         <div class="panel">
             <div class="counter">Выбрано: <span id="selectedCount">0</span></div>
             <div class="help-button" id="helpButton">?</div>
-            <h2 class="panel-title">Выберите предметы</h2>
+            <h2 class="panel-title">Мистер и Мисс ХД 2025</h2>
             
             <div class="instructions" id="instructions">
                 <h3>Как использовать:</h3>
@@ -913,26 +913,27 @@
                 
                 // Генерация таблиц с предметами (по 3 в каждой таблице)
                 let tablesCode = '';
+                
+                // Разбиваем предметы на группы по 3
                 for (let i = 0; i < selectedItems.length; i += 3) {
-                    const item1 = selectedItems[i];
-                    const item2 = selectedItems[i + 1];
-                    const item3 = selectedItems[i + 2];
+                    const groupItems = selectedItems.slice(i, i + 3);
                     
                     tablesCode += '[table]';
                     tablesCode += '[tr]';
                     
-                    // Ячейки с изображениями (используем полные URL)
-                    tablesCode += `[td][center][width=170][img]${item1.imageUrl}[/img][/width][/center][/td]`;
-                    tablesCode += item2 ? `[td][center][width=170][img]${item2.imageUrl}[/img][/width][/center][/td]` : '[td][/td]';
-                    tablesCode += item3 ? `[td][center][width=170][img]${item3.imageUrl}[/img][/width][/center][/td]` : '[td][/td]';
-                    tablesCode += '[/tr]';
+                    // Создаем ячейки ТОЛЬКО для существующих предметов
+                    groupItems.forEach(item => {
+                        tablesCode += `[td][center][width=170][img]${item.imageUrl}[/img][/width][/center][/td]`;
+                    });
                     
+                    tablesCode += '[/tr]';
                     tablesCode += '[tr]';
                     
-                    // Ячейки с названиями
-                    tablesCode += `[td][center][size=90][i][b]${item1.name}[/b][/i][/size][/center][/td]`;
-                    tablesCode += item2 ? `[td][center][size=90][i][b]${item2.name}[/b][/i][/size][/center][/td]` : '[td][/td]';
-                    tablesCode += item3 ? `[td][center][size=90][i][b]${item3.name}[/b][/i][/size][/center][/td]` : '[td][/td]';
+                    // Создаем ячейки с названиями ТОЛЬКО для существующих предметов
+                    groupItems.forEach(item => {
+                        tablesCode += `[td][center][size=90][i][b]${item.name}[/b][/i][/size][/center][/td]`;
+                    });
+                    
                     tablesCode += '[/tr]';
                     tablesCode += '[/table]\n\n';
                 }
