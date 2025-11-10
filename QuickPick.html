@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кладовая домовика Тедди</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        body {
+            background: url('https://radika1.link/2025/08/01/ra_forum_background_img_08c2550a6ef5a7985.jpg');
+            background-size: auto;
+            background-position: center;
+            background-repeat: repeat;
+            color: #e0f7fa;
+            padding: 15px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .main-content {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .top-menu {
+            grid-column: 1 / -1;
+            background: rgba(10, 30, 60, 0.95);
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 2px double #BA9868;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .menu-item {
+            color: #FFD580;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            background: rgba(186, 152, 104, 0.2);
+            border: 1px solid #BA9868;
+            transform: translateY(-2px);
+        }
+
+        .menu-item.active {
+            background: rgba(186, 152, 104, 0.3);
+            border: 1px solid #BA9868;
+        }
+
+        .menu-item.custom-store {
+            border: 1px dashed #BA9868;
+            background: rgba(186, 152, 104, 0.1);
+            padding-right: 60px;
+        }
+        
+        .menu-item-controls {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 4px;
+        }
+        
+        .edit-store-btn, .delete-store-btn {
+            background: rgba(186, 152, 104, 0.3);
+            color: #FFD580;
+            border: 1px solid #BA9868;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .edit-store-btn:hover {
+            background: rgba(46, 139, 87, 0.5);
+        }
+        
+        .delete-store-btn:hover {
+            background: rgba(139, 69, 19, 0.5);
+        }
+        
+        .add-store-btn, .import-store-btn {
+            background: rgba(186, 152, 104, 0.3);
+            color: #FFD580;
+            border: 1px dashed #BA9868;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-store-btn:hover, .import-store-btn:hover {
+            background: rgba(186, 152, 104, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .header-block {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .ravenclaw-title {
+            font-family: 'Permanent Marker', cursive;
+            font-weight: 400;
+            font-size: 100px;
+            margin: 0;
+            padding: 0 20px;
+            max-width: 100%;
+            text-align: center;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            background: linear-gradient(90deg, #BA9868, #FFD580);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #C0B29D;
+            margin: 5px 0 10px 20px;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        h1, h2, h3, .panel-title {
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #BA9868, #FFD580);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(186, 152, 104, 0.5);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .panel {
+            background: rgba(10, 30, 60, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            border: 2px double #BA9868;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .panel-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #BA9868;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px double #BA9868;
+            text-shadow: 0 0 5px rgba(186, 152, 104, 0.3);
+            position: relative;
+        }
+        
+        .help-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(186, 152, 104, 0.2);
+            border: 1px solid #BA9868;
+            color: #FFD580;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .help-button:hover {
+            background: rgba(186, 152, 104, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .instructions {
+            background: rgba(186, 152, 104, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0;
+            border-left: 3px solid #BA9868;
+            display: none;
+        }
+        
+        .instructions.show {
+            display: block;
+        }
+        
+        .instructions h3 {
+            color: #FFD580;
+            margin-bottom: 8px;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .category {
+            padding: 12px;
+            background: rgba(25, 55, 100, 0.5);
+            border-radius: 10px;
+            border-left: 3px solid #BA9868;
+        }
+        
+        .category-title {
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+            font-size: 1.2rem;
+            color: #FFD580;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(186, 152, 104, 0.3);
+        }
+        
+        .items-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .items-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .items-container::-webkit-scrollbar-track {
+            background: rgba(0, 20, 40, 0.5);
+            border-radius: 4px;
+        }
+        
+        .items-container::-webkit-scrollbar-thumb {
+            background: #BA9868;
+            border-radius: 4px;
+        }
+        
+        .items-container::-webkit-scrollbar-thumb:hover {
+            background: #9c7c56;
+        }
+        
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            background: rgba(25, 55, 100, 0.7);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+        
+        .item:hover {
+            background: rgba(35, 75, 140, 0.85);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #BA9868;
+        }
+        
+        .item::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD580, #BA9868, #FFD580);
+            border-radius: 8px 8px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .item:hover::before {
+            opacity: 1;
+        }
+        
+        .item-checkbox {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #BA9868;
+        }
+        
+        .item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            padding: 4px;
+            border: 0px solid #2a5a8a;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        
+        .item:hover .item-image {
+            transform: scale(1.05);
+        }
+        
+        .item-name {
+            font-size: 0.8rem;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        
+        .input-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0 15px;
+        }
+        
+        .input-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-field label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #BA9868;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .input-field label::before {
+            content: "✎";
+            margin-right: 10px;
+            font-size: 1.3rem;
+            color: #FFD580;
+        }
+        
+        .input-field input, .input-field textarea {
+            padding: 12px 16px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid #BA9868;
+            transition: all 0.3s ease;
+            font-family: 'Sofia Sans Extra Condensed', sans-serif;
+        }
+        
+        .input-field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .input-field input:focus, .input-field textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 8px rgba(186, 152, 104, 0.5);
+        }
+        
+        .code-output {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .code-output textarea {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            padding: 20px;
+            background: rgba(0, 15, 35, 0.85);
+            color: #e0f7fa;
+            border: 2px double #BA9868;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: none;
+            margin-top: 12px;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+            flex-grow: 1;
+        }
+        
+        .code-output textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(186, 152, 104, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 12px 20px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .action-btn:active {
+            transform: translateY(0);
+        }
+        
+        .copy-btn {
+            background: linear-gradient(to right, #BA9868, #9c7c56);
+            box-shadow: 0 4px 12px rgba(186, 152, 104, 0.4);
+        }
+        
+        .copy-btn:hover {
+            background: linear-gradient(to right, #9c7c56, #7d6345);
+            box-shadow: 0 6px 15px rgba(186, 152, 104, 0.6);
+        }
+        
+        .refresh-btn {
+            background: linear-gradient(to right, #7d6345, #5e4b34);
+            box-shadow: 0 4px 12px rgba(125, 99, 69, 0.4);
+        }
+        
+        .refresh-btn:hover {
+            background: linear-gradient(to right, #5e4b34, #3f3423);
+            box-shadow: 0 6px 15px rgba(125, 99, 69, 0.6);
+        }
+        
+        .clear-btn {
+            background: linear-gradient(to right, #8B4513, #654321);
+            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.4);
+        }
+        
+        .clear-btn:hover {
+            background: linear-gradient(to right, #654321, #462e16);
+            box-shadow: 0 6px 15px rgba(139, 69, 19, 0.6);
+        }
+        
+        .counter {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(186, 152, 104, 0.2);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #BA9868;
+        }
+        
+        .store-manager {
+            display: none;
+            grid-column: 1 / -1;
+        }
+        
+        .store-manager.active {
+            display: block;
+        }
+        
+        .store-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .store-header {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .store-header input {
+            flex-grow: 1;
+            padding: 12px 16px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid #BA9868;
+        }
+        
+        .categories-manager {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .category-editor {
+            background: rgba(25, 55, 100, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 3px solid #BA9868;
+        }
+        
+        .category-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .category-header input {
+            flex-grow: 1;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid #BA9868;
+            border-radius: 5px;
+        }
+        
+        .items-editor {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .item-editor {
+            background: rgba(35, 75, 140, 0.7);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .item-editor input {
+            width: 100%;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid #BA9868;
+            border-radius: 5px;
+        }
+        
+        .item-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .item-preview img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .item-preview span {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .add-category-btn, .add-item-btn, .remove-category-btn, .remove-item-btn {
+            padding: 8px 12px;
+            background: rgba(186, 152, 104, 0.3);
+            color: #FFD580;
+            border: 1px solid #BA9868;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-category-btn:hover, .add-item-btn:hover {
+            background: rgba(186, 152, 104, 0.5);
+        }
+        
+        .remove-category-btn, .remove-item-btn {
+            background: rgba(139, 69, 19, 0.3);
+            border: 1px solid #8B4513;
+        }
+        
+        .remove-category-btn:hover, .remove-item-btn:hover {
+            background: rgba(139, 69, 19, 0.5);
+        }
+        
+        .store-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .store-controls .action-btn {
+            flex: 0 1 auto;
+        }
+        
+        .export-btn {
+            background: linear-gradient(to right, #2E8B57, #3CB371);
+            box-shadow: 0 4px 12px rgba(46, 139, 87, 0.4);
+        }
+        
+        .export-btn:hover {
+            background: linear-gradient(to right, #3CB371, #2E8B57);
+            box-shadow: 0 6px 15px rgba(46, 139, 87, 0.6);
+        }
+        
+        .import-btn {
+            background: linear-gradient(to right, #4169E1, #1E90FF);
+            box-shadow: 0 4px 12px rgba(65, 105, 225, 0.4);
+        }
+        
+        .import-btn:hover {
+            background: linear-gradient(to right, #1E90FF, #4169E1);
+            box-shadow: 0 6px 15px rgba(65, 105, 225, 0.6);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #BA9868;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 1100px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .panel {
+                padding: 15px;
+            }
+            
+            .item {
+                padding: 6px;
+            }
+            
+            .item-image {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .categories-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .top-menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .menu-item {
+                font-size: 1.1rem;
+                padding: 6px 12px;
+            }
+            
+            .help-button {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .items-editor {
+                grid-template-columns: 1fr;
+            }
+            
+            .store-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-block">
+            <h1 class="ravenclaw-title">Ravenclaw</h1>
+            <h1>Кладовая домовика Тедди</h1>
+        </div>
+
+        <div class="top-menu" id="topMenu">
+            <div class="import-store-btn" id="importStoreBtn" title="Импорт магазина">⤵</div>
+            <div class="add-store-btn" id="addStoreBtn" title="Создать магазин">+</div>
+        </div>
+        
+        <div class="main-content" id="mainContent">
+            <div class="panel">
+                <div class="counter">Выбрано: <span id="selectedCount">0</span></div>
+                <div class="help-button" id="helpButton">?</div>
+                <h2 class="panel-title">Кладовая Тедди</h2>
+                
+                <div class="instructions" id="instructions">
+                    <h3>Как использовать:</h3>
+                    <ol>
+                        <li>Выберите нужные подарки (до 3 в каждой таблице)</li>
+                        <li>Введите имя получателя и записку (по желанию)</li>
+                        <li>При необходимости обновите текст или очистите выбор</li>
+                        <li>Скопируйте готовый код для форума</li>
+                        <li>Двойной клик по тексту сообщения позволяет редактировать его</li>
+                    </ol>
+                </div>
+                
+                <div class="categories-container" id="categoriesContainer">
+                    <div class="empty-state">Создайте магазин, чтобы начать работу</div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="input-fields">
+                    <div class="input-field">
+                        <label for="userName">Введите имя получателя:</label>
+                        <input type="text" id="userName" placeholder="Имя ученика Когтеврана">
+                    </div>
+                    
+                    <div class="input-field">
+                        <label for="userNote">Введите текст записки (необязательно):</label>
+                        <textarea id="userNote" placeholder="Текст записки от Тедди..."></textarea>
+                    </div>
+                </div>
+                
+                <h2 class="panel-title">Сгенерированный код</h2>
+                <div class="code-output">
+                    <textarea id="outputCode" readonly></textarea>
+                    <div class="controls">
+                        <button class="action-btn refresh-btn" id="refreshBtn">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                            </svg>
+                            Обновить
+                        </button>
+                        <button class="action-btn clear-btn" id="clearBtn">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                            Очистить
+                        </button>
+                        <button class="action-btn copy-btn" id="copyBtn">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                            Копировать
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="store-manager panel" id="storeManager">
+            <div class="help-button" id="storeHelpButton">?</div>
+            <h2 class="panel-title">Управление магазинами</h2>
+            
+            <div class="instructions" id="storeInstructions">
+                <h3>Как создавать магазины:</h3>
+                <ol>
+                    <li>Введите название магазина</li>
+                    <li>Добавьте категории товаров</li>
+                    <li>В каждой категории добавьте товары с изображениями и названиями</li>
+                    <li>Сохраните магазин и экспортируйте его для использования на других устройствах</li>
+                    <li>Импортируйте ранее сохраненные магазины</li>
+                </ol>
+            </div>
+            
+            <div class="store-form">
+                <div class="store-header">
+                    <input type="text" id="storeName" placeholder="Название магазина">
+                    <button class="action-btn export-btn" id="exportStoreBtn">Экспорт</button>
+                </div>
+                
+                <div class="categories-manager" id="categoriesManager"></div>
+                
+                <button class="add-category-btn" id="addCategoryBtn">+ Добавить категорию</button>
+                
+                <div class="store-controls">
+                    <button class="action-btn refresh-btn" id="saveStoreBtn">Сохранить магазин</button>
+                    <button class="action-btn clear-btn" id="cancelStoreBtn">Отмена</button>
+                </div>
+            </div>
+        </div>
+        
+        <input type="file" id="importFile" class="file-input" accept=".json">
+    </div>
+
+    <script>
+        const stores = {};
+        let currentStore = null;
+        let currentEditingStore = null;
+        let selectedItems = {};
+        
+        const introductions = [
+            "С легким шорохом домовой эльф Тедди появился посреди комнаты. В руках он держал небольшой сверток.",
+            "Внезапно раздался тихий хлопок, и перед вами возник домовой эльф Тедди с таинственной посылкой."
+        ];
+        
+        const notes = [
+            "пусть жизнь в башне Когтеврана будет сладкой!",
+            "мудрости в учении и отваги в приключениях!"
+        ];
+        
+        const categoriesContainer = document.getElementById('categoriesContainer');
+        const selectedCount = document.getElementById('selectedCount');
+        const outputCode = document.getElementById('outputCode');
+        const userName = document.getElementById('userName');
+        const userNote = document.getElementById('userNote');
+        const helpButton = document.getElementById('helpButton');
+        const instructions = document.getElementById('instructions');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const addStoreBtn = document.getElementById('addStoreBtn');
+        const importStoreBtn = document.getElementById('importStoreBtn');
+        const mainContent = document.getElementById('mainContent');
+        const storeManager = document.getElementById('storeManager');
+        const storeName = document.getElementById('storeName');
+        const categoriesManager = document.getElementById('categoriesManager');
+        const addCategoryBtn = document.getElementById('addCategoryBtn');
+        const saveStoreBtn = document.getElementById('saveStoreBtn');
+        const cancelStoreBtn = document.getElementById('cancelStoreBtn');
+        const exportStoreBtn = document.getElementById('exportStoreBtn');
+        const importFile = document.getElementById('importFile');
+        const storeHelpButton = document.getElementById('storeHelpButton');
+        const storeInstructions = document.getElementById('storeInstructions');
+        const topMenu = document.getElementById('topMenu');
+        
+        function init() {
+            loadStoresFromStorage();
+            updateMenu();
+            setupEventListeners();
+            
+            if (Object.keys(stores).length > 0) {
+                currentStore = Object.keys(stores)[0];
+                renderCategories();
+                updateOutputCode();
+            }
+        }
+        
+        function loadStoresFromStorage() {
+            const savedStores = localStorage.getItem('gs-stores');
+            if (savedStores) {
+                try {
+                    const parsed = JSON.parse(savedStores);
+                    Object.assign(stores, parsed);
+                } catch (e) {
+                    console.error('Ошибка загрузки:', e);
+                }
+            }
+        }
+        
+        function saveStoresToStorage() {
+            localStorage.setItem('gs-stores', JSON.stringify(stores));
+        }
+        
+        function renderCategories() {
+            categoriesContainer.innerHTML = '';
+            selectedItems = {};
+            
+            if (!currentStore || !stores[currentStore]) {
+                categoriesContainer.innerHTML = '<div class="empty-state">Выберите магазин из меню</div>';
+                return;
+            }
+            
+            const store = stores[currentStore];
+            
+            if (!store.categories || Object.keys(store.categories).length === 0) {
+                categoriesContainer.innerHTML = '<div class="empty-state">В этом магазине пока нет товаров</div>';
+                return;
+            }
+            
+            for (const categoryKey in store.categories) {
+                const category = store.categories[categoryKey];
+                
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category';
+                
+                const categoryTitle = document.createElement('h3');
+                categoryTitle.className = 'category-title';
+                categoryTitle.textContent = category.name || categoryKey;
+                categoryElement.appendChild(categoryTitle);
+                
+                const itemsContainer = document.createElement('div');
+                itemsContainer.className = 'items-container';
+                
+                if (category.items && category.items.length > 0) {
+                    category.items.forEach(item => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'item';
+                        
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.className = 'item-checkbox';
+                        checkbox.dataset.category = categoryKey;
+                        checkbox.dataset.itemId = item.id;
+                        checkbox.dataset.name = item.name;
+                        checkbox.dataset.image = item.imageUrl;
+                        
+                        checkbox.addEventListener('change', function() {
+                            handleItemSelection(categoryKey, item.id, this.checked);
+                        });
+                        
+                        const image = document.createElement('img');
+                        image.className = 'item-image';
+                        image.src = item.imageUrl;
+                        image.alt = item.name;
+                        image.onerror = function() {
+                            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjMTkyNTQwIi8+CjxwYXRoIGQ9Ik00MCAyMEMzMi4zODIgMjAgMjYgMjYuMzgyIDI2IDM0QzI2IDQxLjYxOCAzMi4zODIgNDggNDAgNDhDNjcuNjE4IDQ4IDc0IDQxLjYxOCA3NCAzNEM3NCAyNi4zODIgNjcuNjE4IDIwIDYwIDIwWiIgZmlsbD0iI0JBOTg2OCIvPgo8cGF0aCBkPSJNNTIgNTJIMjhWNjJINTJWNjBWNjJWNzJIMjhWNjJIMjZINjJWNjJINjBWNzJINTJWNjJINjJWNTJaIiBmaWxsPSIjQkE5ODY4Ii8+Cjwvc3ZnPgo=';
+                        };
+                        
+                        const name = document.createElement('span');
+                        name.className = 'item-name';
+                        name.textContent = item.name;
+                        
+                        itemElement.appendChild(checkbox);
+                        itemElement.appendChild(image);
+                        itemElement.appendChild(name);
+                        
+                        itemsContainer.appendChild(itemElement);
+                    });
+                }
+                
+                categoryElement.appendChild(itemsContainer);
+                categoriesContainer.appendChild(categoryElement);
+            }
+            
+            updateSelectedCount();
+        }
+        
+        function handleItemSelection(category, itemId, isSelected) {
+            if (!selectedItems[category]) {
+                selectedItems[category] = [];
+            }
+            
+            if (isSelected) {
+                if (selectedItems[category].length >= 3) {
+                    const checkbox = document.querySelector(`.item-checkbox[data-category="${category}"][data-item-id="${itemId}"]`);
+                    if (checkbox) checkbox.checked = false;
+                    alert('Можно выбрать не более 3 предметов в каждой категории');
+                    return;
+                }
+                selectedItems[category].push(itemId);
+            } else {
+                const index = selectedItems[category].indexOf(itemId);
+                if (index > -1) {
+                    selectedItems[category].splice(index, 1);
+                }
+            }
+            
+            updateSelectedCount();
+            updateOutputCode();
+        }
+        
+        function updateSelectedCount() {
+            let total = 0;
+            for (const category in selectedItems) {
+                total += selectedItems[category].length;
+            }
+            selectedCount.textContent = total;
+        }
+        
+        function updateOutputCode() {
+            let code = '';
+            
+            const intro = introductions[Math.floor(Math.random() * introductions.length)];
+            code = intro + '\n\n';
+            
+            const name = userName.value.trim();
+            const note = userNote.value.trim();
+            
+            if (note) {
+                if (name) {
+                    code += `[quote][i]Записка: "${name}, ${note}"[/i][/quote]\n\n`;
+                } else {
+                    code += `[quote][i]Записка: "${note}"[/i][/quote]\n\n`;
+                }
+            } else if (name) {
+                const randomNote = notes[Math.floor(Math.random() * notes.length)];
+                code += `[quote][i]Записка: "${name}, ${randomNote}"[/i][/quote]\n\n`;
+            }
+            
+            const selectedItemsArray = [];
+            document.querySelectorAll('.item-checkbox:checked').forEach(checkbox => {
+                selectedItemsArray.push({
+                    name: checkbox.dataset.name,
+                    imageUrl: checkbox.dataset.image
+                });
+            });
+            
+            if (selectedItemsArray.length > 0) {
+                for (let i = 0; i < selectedItemsArray.length; i += 3) {
+                    const groupItems = selectedItemsArray.slice(i, i + 3);
+                    
+                    code += '[table][tr]';
+                    
+                    groupItems.forEach(item => {
+                        code += `[td][center][width=170][img]${item.imageUrl}[/img][/width][/center][/td]`;
+                    });
+                    
+                    for (let j = groupItems.length; j < 3; j++) {
+                        code += '[td][/td]';
+                    }
+                    
+                    code += '[/tr][tr]';
+                    
+                    groupItems.forEach(item => {
+                        code += `[td][center][size=90][i][b]${item.name}[/b][/i][/size][/center][/td]`;
+                    });
+                    
+                    for (let j = groupItems.length; j < 3; j++) {
+                        code += '[td][/td]';
+                    }
+                    
+                    code += '[/tr][/table]\n\n';
+                }
+            } else {
+                code += "[i]Тедди исчез так же внезапно, как и появился...[/i]";
+            }
+            
+            outputCode.value = code;
+        }
+        
+        function setupEventListeners() {
+            helpButton.addEventListener('click', () => instructions.classList.toggle('show'));
+            storeHelpButton.addEventListener('click', () => storeInstructions.classList.toggle('show'));
+            
+            refreshBtn.addEventListener('click', updateOutputCode);
+            
+            clearBtn.addEventListener('click', () => {
+                selectedItems = {};
+                document.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = false);
+                updateSelectedCount();
+                updateOutputCode();
+            });
+            
+            copyBtn.addEventListener('click', () => {
+                outputCode.select();
+                document.execCommand('copy');
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '✓ Скопировано!';
+                setTimeout(() => copyBtn.innerHTML = originalText, 2000);
+            });
+            
+            userName.addEventListener('input', updateOutputCode);
+            userNote.addEventListener('input', updateOutputCode);
+            
+            addStoreBtn.addEventListener('click', () => {
+                currentEditingStore = null;
+                storeName.value = '';
+                categoriesManager.innerHTML = '';
+                addCategoryEditor();
+                mainContent.style.display = 'none';
+                storeManager.classList.add('active');
+            });
+            
+            importStoreBtn.addEventListener('click', () => importFile.click());
+            
+            importFile.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const importedStore = JSON.parse(event.target.result);
+                        
+                        if (!importedStore.name || !importedStore.categories) {
+                            alert('Некорректный файл магазина');
+                            return;
+                        }
+                        
+                        const storeId = 'store-' + Date.now();
+                        stores[storeId] = importedStore;
+                        saveStoresToStorage();
+                        updateMenu();
+                        currentStore = storeId;
+                        renderCategories();
+                        updateOutputCode();
+                        alert(`Магазин "${importedStore.name}" успешно импортирован!`);
+                    } catch (error) {
+                        alert('Ошибка при импорте файла: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+                e.target.value = '';
+            });
+            
+            addCategoryBtn.addEventListener('click', () => addCategoryEditor());
+            
+            saveStoreBtn.addEventListener('click', saveStore);
+            
+            cancelStoreBtn.addEventListener('click', () => {
+                mainContent.style.display = 'grid';
+                storeManager.classList.remove('active');
+            });
+            
+            exportStoreBtn.addEventListener('click', exportStore);
+            
+            outputCode.addEventListener('dblclick', function() {
+                this.removeAttribute('readonly');
+                this.focus();
+            });
+            
+            outputCode.addEventListener('blur', function() {
+                this.setAttribute('readonly', true);
+            });
+        }
+        
+        function saveStore() {
+            const name = storeName.value.trim();
+            if (!name) {
+                alert('Введите название магазина');
+                return;
+            }
+            
+            const categories = {};
+            const categoryEditors = categoriesManager.querySelectorAll('.category-editor');
+            
+            let hasItems = false;
+            categoryEditors.forEach((editor, index) => {
+                const categoryNameInput = editor.querySelector('.category-name');
+                const categoryName = categoryNameInput.value.trim() || `Категория ${index + 1}`;
+                
+                const items = [];
+                const itemEditors = editor.querySelectorAll('.item-editor');
+                
+                itemEditors.forEach(itemEditor => {
+                    const itemNameInput = itemEditor.querySelector('.item-name');
+                    const itemImageInput = itemEditor.querySelector('.item-image');
+                    
+                    const itemName = itemNameInput.value.trim();
+                    const itemImage = itemImageInput.value.trim();
+                    
+                    if (itemName && itemImage) {
+                        items.push({
+                            id: 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                            name: itemName,
+                            imageUrl: itemImage
+                        });
+                        hasItems = true;
+                    }
+                });
+                
+                if (items.length > 0) {
+                    categories['category-' + index] = {
+                        name: categoryName,
+                        items: items
+                    };
+                }
+            });
+            
+            if (!hasItems) {
+                alert('Добавьте хотя бы один товар в магазин');
+                return;
+            }
+            
+            const storeId = currentEditingStore || 'store-' + Date.now();
+            stores[storeId] = {
+                name: name,
+                categories: categories
+            };
+            
+            saveStoresToStorage();
+            updateMenu();
+            mainContent.style.display = 'grid';
+            storeManager.classList.remove('active');
+            currentStore = storeId;
+            renderCategories();
+            updateOutputCode();
+            alert(`Магазин "${name}" успешно ${currentEditingStore ? 'сохранен' : 'создан'}!`);
+        }
+        
+        function exportStore() {
+            const name = storeName.value.trim();
+            if (!name) {
+                alert('Введите название магазина перед экспортом');
+                return;
+            }
+            
+            const categories = {};
+            const categoryEditors = categoriesManager.querySelectorAll('.category-editor');
+            
+            categoryEditors.forEach((editor, index) => {
+                const categoryNameInput = editor.querySelector('.category-name');
+                const categoryName = categoryNameInput.value.trim() || `Категория ${index + 1}`;
+                
+                const items = [];
+                const itemEditors = editor.querySelectorAll('.item-editor');
+                
+                itemEditors.forEach(itemEditor => {
+                    const itemNameInput = itemEditor.querySelector('.item-name');
+                    const itemImageInput = itemEditor.querySelector('.item-image');
+                    
+                    const itemName = itemNameInput.value.trim();
+                    const itemImage = itemImageInput.value.trim();
+                    
+                    if (itemName && itemImage) {
+                        items.push({
+                            id: 'item-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+                            name: itemName,
+                            imageUrl: itemImage
+                        });
+                    }
+                });
+                
+                if (items.length > 0) {
+                    categories['category-' + index] = {
+                        name: categoryName,
+                        items: items
+                    };
+                }
+            });
+            
+            const storeData = {
+                name: name,
+                categories: categories
+            };
+            
+            const dataStr = JSON.stringify(storeData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `магазин-${name.toLowerCase().replace(/\s+/g, '-')}.json`;
+            link.click();
+            URL.revokeObjectURL(link.href);
+        }
+        
+        function addCategoryEditor(categoryData = null) {
+            const categoryEditor = document.createElement('div');
+            categoryEditor.className = 'category-editor';
+            
+            const categoryHeader = document.createElement('div');
+            categoryHeader.className = 'category-header';
+            
+            const categoryNameInput = document.createElement('input');
+            categoryNameInput.type = 'text';
+            categoryNameInput.className = 'category-name';
+            categoryNameInput.placeholder = 'Название категории';
+            categoryNameInput.value = categoryData ? categoryData.name : '';
+            
+            const removeCategoryBtn = document.createElement('button');
+            removeCategoryBtn.type = 'button';
+            removeCategoryBtn.className = 'remove-category-btn';
+            removeCategoryBtn.textContent = '×';
+            removeCategoryBtn.addEventListener('click', () => {
+                if (categoriesManager.children.length > 1) {
+                    categoryEditor.remove();
+                } else {
+                    alert('Должна остаться хотя бы одна категория');
+                }
+            });
+            
+            categoryHeader.appendChild(categoryNameInput);
+            categoryHeader.appendChild(removeCategoryBtn);
+            
+            const itemsEditor = document.createElement('div');
+            itemsEditor.className = 'items-editor';
+            
+            if (categoryData && categoryData.items) {
+                categoryData.items.forEach(item => addItemEditor(itemsEditor, item));
+            } else {
+                addItemEditor(itemsEditor);
+            }
+            
+            const addItemBtn = document.createElement('button');
+            addItemBtn.type = 'button';
+            addItemBtn.className = 'add-item-btn';
+            addItemBtn.textContent = '+ Добавить товар';
+            addItemBtn.addEventListener('click', () => addItemEditor(itemsEditor));
+            
+            categoryEditor.appendChild(categoryHeader);
+            categoryEditor.appendChild(itemsEditor);
+            categoryEditor.appendChild(addItemBtn);
+            
+            categoriesManager.appendChild(categoryEditor);
+        }
+        
+        function addItemEditor(container, itemData = null) {
+            const itemEditor = document.createElement('div');
+            itemEditor.className = 'item-editor';
+            
+            const itemNameInput = document.createElement('input');
+            itemNameInput.type = 'text';
+            itemNameInput.className = 'item-name';
+            itemNameInput.placeholder = 'Название товара';
+            itemNameInput.value = itemData ? itemData.name : '';
+            
+            const itemImageInput = document.createElement('input');
+            itemImageInput.type = 'text';
+            itemImageInput.className = 'item-image';
+            itemImageInput.placeholder = 'URL изображения';
+            itemImageInput.value = itemData ? itemData.imageUrl : '';
+            
+            const itemPreview = document.createElement('div');
+            itemPreview.className = 'item-preview';
+            
+            const previewImage = document.createElement('img');
+            previewImage.src = itemData ? itemData.imageUrl : '';
+            previewImage.alt = 'Предпросмотр';
+            previewImage.onerror = function() {
+                this.style.display = 'none';
+            };
+            
+            const previewText = document.createElement('span');
+            previewText.textContent = itemData ? itemData.name : 'Предпросмотр';
+            
+            itemPreview.appendChild(previewImage);
+            itemPreview.appendChild(previewText);
+            
+            const removeItemBtn = document.createElement('button');
+            removeItemBtn.type = 'button';
+            removeItemBtn.className = 'remove-item-btn';
+            removeItemBtn.textContent = '×';
+            removeItemBtn.addEventListener('click', () => {
+                if (container.children.length > 1) {
+                    itemEditor.remove();
+                } else {
+                    alert('Должен остаться хотя бы один товар в категории');
+                }
+            });
+            
+            const updatePreview = () => {
+                if (itemImageInput.value) {
+                    previewImage.src = itemImageInput.value;
+                    previewImage.style.display = 'block';
+                } else {
+                    previewImage.style.display = 'none';
+                }
+                previewText.textContent = itemNameInput.value || 'Предпросмотр';
+            };
+            
+            itemNameInput.addEventListener('input', updatePreview);
+            itemImageInput.addEventListener('input', updatePreview);
+            
+            itemEditor.appendChild(itemNameInput);
+            itemEditor.appendChild(itemImageInput);
+            itemEditor.appendChild(itemPreview);
+            itemEditor.appendChild(removeItemBtn);
+            
+            container.appendChild(itemEditor);
+            updatePreview();
+        }
+        
+        function updateMenu() {
+            const existingMenuItems = topMenu.querySelectorAll('.menu-item');
+            existingMenuItems.forEach(item => item.remove());
+            
+            const importBtn = document.getElementById('importStoreBtn');
+            
+            for (const storeId in stores) {
+                const store = stores[storeId];
+                
+                const menuItem = document.createElement('a');
+                menuItem.href = '#';
+                menuItem.className = 'menu-item custom-store';
+                menuItem.dataset.store = storeId;
+                menuItem.textContent = store.name;
+                
+                if (currentStore === storeId) {
+                    menuItem.classList.add('active');
+                }
+                
+                const controls = document.createElement('div');
+                controls.className = 'menu-item-controls';
+                
+                const editBtn = document.createElement('div');
+                editBtn.className = 'edit-store-btn';
+                editBtn.textContent = '✎';
+                editBtn.title = 'Редактировать';
+                editBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    editStore(storeId);
+                });
+                
+                const deleteBtn = document.createElement('div');
+                deleteBtn.className = 'delete-store-btn';
+                deleteBtn.textContent = '×';
+                deleteBtn.title = 'Удалить';
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteStore(storeId);
+                });
+                
+                controls.appendChild(editBtn);
+                controls.appendChild(deleteBtn);
+                menuItem.appendChild(controls);
+                
+                menuItem.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('edit-store-btn') && 
+                        !e.target.classList.contains('delete-store-btn')) {
+                        e.preventDefault();
+                        document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                        menuItem.classList.add('active');
+                        currentStore = storeId;
+                        renderCategories();
+                        updateOutputCode();
+                    }
+                });
+                
+                topMenu.insertBefore(menuItem, importBtn);
+            }
+        }
+        
+        function editStore(storeId) {
+            const store = stores[storeId];
+            if (!store) return;
+            
+            currentEditingStore = storeId;
+            storeName.value = store.name;
+            categoriesManager.innerHTML = '';
+            
+            for (const categoryKey in store.categories) {
+                addCategoryEditor(store.categories[categoryKey]);
+            }
+            
+            mainContent.style.display = 'none';
+            storeManager.classList.add('active');
+        }
+        
+        function deleteStore(storeId) {
+            const store = stores[storeId];
+            if (!store) return;
+            
+            if (confirm(`Удалить магазин "${store.name}"?`)) {
+                delete stores[storeId];
+                saveStoresToStorage();
+                
+                if (currentStore === storeId) {
+                    currentStore = Object.keys(stores)[0] || null;
+                }
+                
+                updateMenu();
+                renderCategories();
+                updateOutputCode();
+            }
+        }
+        
+        init();
+    </script>
+</body>
+</html>
